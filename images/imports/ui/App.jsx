@@ -4,8 +4,7 @@ import { Info } from './Info.jsx';
 
 export const App = () => (
   <div>
-    <h1>Welcome to Meteor!</h1>
+    <h1> Welcome to Meteor Images App</h1>
     <Hello/>
-    <Info/>
   </div>
 );
