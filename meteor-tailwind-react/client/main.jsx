@@ -4,5 +4,16 @@ import { render } from 'react-dom';
 import { App } from '/imports/ui/App';
 
 Meteor.startup(() => {
-  render(<App/>, document.getElementById('react-target'));
+  const container = document.getElementById("react-target");
+  const root = creatRoot(container);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  )
+  
+
+
+  
+
 });

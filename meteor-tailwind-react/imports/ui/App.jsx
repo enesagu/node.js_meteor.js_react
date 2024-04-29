@@ -1,10 +1,16 @@
 import React from 'react';
-import { Hello } from './Hello.jsx';
-import { Info } from './Info.jsx';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import SignInPage from "/imports/ui/pages/sign-in";
 
-export const App = () => (
-  <div className="max-w-3xl min-h-screen mx-auto sm:pt-10">
-    <Hello/>
-    <Info/>
-  </div>
-);
+const router = createBrowserRouter([
+  {
+    path: "/sign-in",
+    element: <SignInPage />,
+  },
+]);
+
+export const App = () => {
+  return (
+    <RouterProvider router={router} />
+  )
+}
