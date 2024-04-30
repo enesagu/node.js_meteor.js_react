@@ -97,6 +97,14 @@ header {
   outline: 0;
 }
 
+.filter {
+  display: flex;
+  justify-content: center;
+}
+
+.filter > button {
+  background-color: #62807e;
+}
 
 .task-form > button {
   min-width: 100px;
@@ -126,4 +134,66 @@ header {
 .tasks > li > button {
   justify-self: flex-end;
   background-color: #ff3046;
+}
+
+button.delete-button {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #e62222;
+}
+
+button.delete-button,
+button.delete-button span {
+  transition: 200ms;
+}
+
+button.delete-button .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+button.delete-button .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.delete-button svg {
+  width: 15px;
+  fill: #eee;
+}
+
+button.delete-button:hover {
+  background: #ff3636;
+}
+
+button.delete-button:hover .text {
+  color: transparent;
+}
+
+button.delete-button:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+button.delete-button:focus {
+  outline: none;
+}
+
+button.delete-button:active .icon svg {
+  transform: scale(0.8);
 }
