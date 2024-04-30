@@ -136,64 +136,51 @@ header {
   background-color: #ff3046;
 }
 
-button.delete-button {
-  width: 150px;
-  height: 50px;
-  cursor: pointer;
+.login-form {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 150px solid #315481;
+
+  justify-content: center;
   align-items: center;
-  background: red;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-  background: #e62222;
 }
 
-button.delete-button,
-button.delete-button span {
-  transition: 200ms;
+.login-form > div {
+  margin: 8px;
+  
 }
 
-button.delete-button .text {
-  transform: translateX(35px);
-  color: white;
+.login-form > div > label {
   font-weight: bold;
 }
 
-button.delete-button .icon {
-  position: absolute;
-  border-left: 1px solid #c41b1b;
-  transform: translateX(110px);
-  height: 40px;
-  width: 40px;
+.login-form > div  > input {
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  background: rgb(149, 215, 226);
+  border: 1px solid #bbe0ee;
+  width: 100%;
+  font-size: 1em;
+  margin-right: 16px;
+  margin-top: 4px;
+}
+
+.login-form > div > input:focus {
+  outline: 0;
+}
+
+.login-form > div > button {
+  background-color: #62807e;
+}
+
+
+.user {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-button.delete-button svg {
-  width: 15px;
-  fill: #eee;
-}
+  align-self: flex-end;
 
-button.delete-button:hover {
-  background: #ff3636;
-}
-
-button.delete-button:hover .text {
-  color: transparent;
-}
-
-button.delete-button:hover .icon {
-  width: 150px;
-  border-left: none;
-  transform: translateX(0);
-}
-
-button.delete-button:focus {
-  outline: none;
-}
-
-button.delete-button:active .icon svg {
-  transform: scale(0.8);
+  margin: 8px 16px 0;
+  font-weight: bold;
 }
