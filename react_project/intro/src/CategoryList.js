@@ -10,6 +10,10 @@ export default class CategoryList extends Component {
   }; // state is true 
 
 
+  getCategories = ()=>{
+    fetch("localhost://localhost:3000/categories")
+  }
+
   render() {
     return (
       <div>
