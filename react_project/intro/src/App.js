@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "reactstrap";
 
 export default class App extends Component {
-  state = { currentCategory: "", products: [] , cart :  []};
+  state = { currentCategory: "", products: [], cart: [] };
 
   componentDidMount() {
     this.getProducts();
@@ -28,22 +28,16 @@ export default class App extends Component {
       .catch((error) => console.error("Error:", error));
   };
 
-  addToCart = (product) =>{
+  addToCart = (product) => {
     let newCart = this.state.cart;
-    var addedItem = newCart.find(c => c.product.id === product.id)
-    if(addedItem){
+    var addedItem = newCart.find((c) => c.product.id === product.id);
+    if (addedItem) {
       addedItem.quantity += 1;
+    } else {
+      newCart.push({ product: product, quantity: 1 });
     }
-    else {
-      newCart.push({product:product,quantity:1})
-
-    }
-    this.setState({cart:newCart});
-
-
-  }
-  
-
+    this.setState({ cart: newCart });
+  };
 
   render() {
     let productInfo = { title: "ProductList" };
@@ -52,7 +46,7 @@ export default class App extends Component {
     return (
       <div>
         <Container>
-          <Navi   cart = {this.state.cart} />
+          <Navi cart={this.state.cart} />
           <Row>
             <Col cs="3">
               <CategoryList
@@ -64,7 +58,7 @@ export default class App extends Component {
             <Col xs="9">
               <ProductList
                 products={this.state.products}
-                addToCart = {this.addToCart}
+                addToCart={this.addToCart}
                 currentCategory={this.state.currentCategory}
                 info={productInfo}
               />
