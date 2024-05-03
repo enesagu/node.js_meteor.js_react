@@ -11,7 +11,7 @@ export default class CategoryList extends Component {
 
 
   getCategories = ()=>{
-    fetch("localhost://localhost:3000/categories")
+    fetch("localhost://localhost:3000/db.json")
   }
 
   render() {
