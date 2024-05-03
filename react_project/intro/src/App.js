@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "reactstrap";
 
 export default class App extends Component {
-  state = { currentCategory: "", products: [] };
+  state = { currentCategory: "", products: [] , cart :  []};
 
   componentDidMount() {
     this.getProducts();
@@ -17,7 +17,7 @@ export default class App extends Component {
     this.getProducts(category.id);
   };
 
-  getProducts = categoryId => {
+  getProducts = (categoryId) => {
     let url = "http://localhost:3000/products";
     if (categoryId) {
       url += "?categoryId=" + categoryId;
@@ -28,6 +28,23 @@ export default class App extends Component {
       .catch((error) => console.error("Error:", error));
   };
 
+  addToCart = (product) =>{
+    let newCart = this.state.cart;
+    var addedItem = newCart.find(c => c.product.id === product.id)
+    if(addedItem){
+      addedItem.quantity += 1;
+    }
+    else {
+      newCart.push({product:product,quantity:1})
+
+    }
+    this.setState({cart:newCart});
+
+
+  }
+  
+
+
   render() {
     let productInfo = { title: "ProductList" };
     let categoryInfo = { title: "CategoryList" };
@@ -35,9 +52,7 @@ export default class App extends Component {
     return (
       <div>
         <Container>
-          <Row>
-            <Navi />
-          </Row>
+          <Navi   cart = {this.state.cart} />
           <Row>
             <Col cs="3">
               <CategoryList
@@ -48,9 +63,10 @@ export default class App extends Component {
             </Col>
             <Col xs="9">
               <ProductList
+                products={this.state.products}
+                addToCart = {this.addToCart}
                 currentCategory={this.state.currentCategory}
                 info={productInfo}
-                products={this.state.products}
               />
             </Col>
           </Row>
