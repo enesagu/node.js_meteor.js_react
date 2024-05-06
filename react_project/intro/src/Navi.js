@@ -7,37 +7,64 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
 } from "reactstrap";
 import CartSummary from "./CartSummary";
 
-function Navi(props) {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
+export default class Navi extends React.Component{
+  constructor(props){
+    super(props);
 
-  return (
-    <div>
-      <Navbar light expand="md">
-        <NavbarBrand href="/">NorthWind App</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
-              </NavLink>
-            </NavItem>
-            <CartSummary cart={props.cart} /> {/* Corrected here */}
-          </Nav>
-          <NavbarText>Simple Text</NavbarText>
-        </Collapse>
-      </Navbar>
-    </div>
-  );
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen : false
+    };
+
+
+
+
+  }
+  
+  toggle(){
+    this.setState({
+      isOpen: !this.state.isOpen
+
+    });
+  }
+
+  render(){
+    return (
+      <div>
+
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">NorthWind App</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/components/">Component</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/enesagu">Github</NavLink>
+              </NavItem>
+
+              <CartSummary cart={this.props.cart} />
+
+
+
+            </Nav>
+          </Collapse>
+        </Navbar>
+
+
+
+
+
+      </div>
+    )
+  }
+
+
+
 }
 
-export default Navi;
