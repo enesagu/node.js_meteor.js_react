@@ -70,15 +70,14 @@ export default class App extends Component {
                 <Route
                   exact
                   path="/"
-                  render={(props) => (
+                  element={
                     <ProductList
-                      {...props}
                       products={this.state.products}
                       addToCart={this.addToCart}
                       currentCategory={this.state.currentCategory}
                       info={productInfo}
                     />
-                  )}
+                  }
                 />
 
                 <Route exact path="/cart" element={<CartList />} />
