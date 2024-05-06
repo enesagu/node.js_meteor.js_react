@@ -9,6 +9,37 @@ This repository contains a collection of Meteor.js projects, each designed for d
 ### Boostrap Added
 This project adds the Bootstrap framework to the application. Bootstrap is a CSS framework that allows you to easily use UI components and styles.
 
+### Starting the React Project
+Before running any of the react projects, you need to start the JSON server to serve the db.json file.
+
+```
+```
+json-server --watch db.json --port 3000
+```
+This command will start the JSON server on port 3000 and watch the db.json file for changes.
+
+
+Once the JSON server is running, you can start the React project using npm:
+
+```
+npm start
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Usage
 ```bash
 git checkout boostrap-added
