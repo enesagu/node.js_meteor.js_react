@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "alertifyjs": "^1.14.0",
     "json-server": "^1.0.0-alpha.23"
   }
 }
