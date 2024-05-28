@@ -3,16 +3,13 @@ body {
   background-color: #315481;
   background-image: linear-gradient(to bottom, #315481, #918e82 100%);
   background-attachment: fixed;
-
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-
   padding: 0;
   margin: 0;
-
   font-size: 14px;
 }
 
@@ -24,6 +21,7 @@ button {
   box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
   padding: 5px;
   cursor: pointer;
+  border-radius: 12px; /* Oval köşe */
 }
 
 button:focus {
@@ -91,6 +89,7 @@ header {
   width: 100%;
   font-size: 1em;
   margin-right: 16px;
+  border-radius: 12px; /* Oval köşe */
 }
 
 .task-form > input:focus {
@@ -110,6 +109,7 @@ header {
   min-width: 100px;
   height: 95%;
   background-color: #315481;
+  border-radius: 12px; /* Oval köşe */
 }
 
 .tasks {
@@ -134,6 +134,7 @@ header {
 .tasks > li > button {
   justify-self: flex-end;
   background-color: #ff3046;
+  border-radius: 12px; /* Oval köşe */
 }
 
 .login-form {
@@ -141,21 +142,20 @@ header {
   flex-direction: column;
   height: 100%;
   border: 150px solid #315481;
-
   justify-content: center;
   align-items: center;
+  border-radius: 12px; /* Oval köşe */
 }
 
 .login-form > div {
   margin: 8px;
-  
 }
 
 .login-form > div > label {
   font-weight: bold;
 }
 
-.login-form > div  > input {
+.login-form > div > input {
   flex-grow: 1;
   box-sizing: border-box;
   padding: 10px 6px;
@@ -165,6 +165,7 @@ header {
   font-size: 1em;
   margin-right: 16px;
   margin-top: 4px;
+  border-radius: 12px; /* Oval köşe */
 }
 
 .login-form > div > input:focus {
@@ -173,14 +174,25 @@ header {
 
 .login-form > div > button {
   background-color: #62807e;
+  border-radius: 12px; /* Oval köşe */
 }
-
 
 .user {
   display: flex;
-
   align-self: flex-end;
-
   margin: 8px 16px 0;
   font-weight: bold;
+  border-radius: 12px; /* Oval köşe */
+}
+
+.user:hover {
+  cursor: pointer; /* El işaretine dönüştürür */
+}
+
+.login-form > div > input:focus {
+  outline: 0;
+}
+
+.login-form > div > button {
+  background-color: #62807e;
 }

@@ -23,19 +23,37 @@ export const App = () => {
 
   const hideCompletedFilter = { isChecked: { $ne: true } };
 
-  const tasks = useTracker(() =>
-    TasksCollection.find(hideCompleted ? hideCompletedFilter : {}, {
-      sort: { createdAt: -1 },
-    }).fetch()
-  );
+  const userFilter = user ? { userId: user._id } : {};
+  const pendingOnlyFilter = { ...hideCompletedFilter, ...userFilter };
 
-  const pendingTasksCount = useTracker(() =>
-    TasksCollection.find(hideCompletedFilter).count()
-  );
+  const tasks = useTracker(() => {
+    if (!user) {
+      return [];
+    }
+
+    return TasksCollection.find(
+      hideCompleted ? pendingOnlyFilter : userFilter,
+      {
+        sort: { createdAt: -1 },
+      }
+    ).fetch();
+  });
+
+  const pendingTasksCount = useTracker(() => {
+    if (!user) {
+      return 0;
+    }
+
+    return TasksCollection.find(pendingOnlyFilter).count();
+  });
 
   const pendingTasksTitle = `${
     pendingTasksCount ? ` (${pendingTasksCount})` : ""
   }`;
+
+  <TaskForm user={user} />
+
+  const logout = () => Meteor.logout();
 
   return (
     <div className="app">
@@ -53,6 +71,9 @@ export const App = () => {
       <div className="main">
         {user ? (
           <Fragment>
+            <div className="user" onClick={logout}>
+              {user.username}🚪
+            </div>
             <TaskForm />
 
             <div className="filter">
