@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { TasksCollection } from '/imports/api/TasksCollection';
+import { Meteor } from 'meteor/meteor';
+
+
 
 export const TaskForm = () => {
   const [text, setText] = useState('');
@@ -8,6 +10,9 @@ export const TaskForm = () => {
     e.preventDefault();
 
     if (!text) return;
+
+    Meteor.call('taks.insert',text);
+
 
     TasksCollection.insert({
       text: text.trim(),
